@@ -1,26 +1,81 @@
+// src/App.tsx
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
+import { AuthProvider } from './context/AuthContext';
+import Layout from './components/layout/Layout';
+import Dashboard from './pages/Dashboard';
+import Inventory from './pages/Inventory';
+import Movements from './pages/Movements';
+import Reports from './pages/Reports';
+import Suppliers from './pages/Suppliers';
+import Settings from './pages/Settings';
+import Login from './pages/Login';
+import RoleGuard from './components/auth/RoleGuard';
+import { Toaster } from 'react-hot-toast';
 
-function App() {
+const App: React.FC = () => {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Router>
+      <AuthProvider>
+        <Toaster position="top-right" />
+        <Routes>
+          <Route path="/login" element={<Login />} />
+          <Route path="/" element={
+            <RoleGuard>
+              <Layout />
+            </RoleGuard>
+          }>
+            <Route index element={<Navigate to="/dashboard" replace />} />
+            <Route path="dashboard" element={<Dashboard />} />
+            <Route path="inventory" element={<Inventory />} />
+            <Route path="movements" element={<Movements />} />
+            <Route path="reports" element={
+              <RoleGuard allowedRoles={['admin', 'manager']}>
+                <Reports />
+              </RoleGuard>
+            } />
+            <Route path="suppliers" element={
+              <RoleGuard allowedRoles={['admin', 'manager']}>
+                <Suppliers />
+              </RoleGuard>
+            } />
+            <Route path="settings" element={
+              <RoleGuard allowedRoles={['admin']}>
+                <Settings />
+              </RoleGuard>
+            } />
+          </Route>
+          <Route path="*" element={<Navigate to="/login" replace />} />
+        </Routes>
+      </AuthProvider>
+    </Router>
   );
-}
+};
 
 export default App;
+// import React from 'react';
+// import logo from './logo.svg';
+// import './App.css';
+
+// function App() {
+//   return (
+//     <div className="App">
+//       <header className="App-header">
+//         <img src={logo} className="App-logo" alt="logo" />
+//         <p>
+//           Edit <code>src/App.tsx</code> and save to reload.
+//         </p>
+//         <a
+//           className="App-link"
+//           href="https://reactjs.org"
+//           target="_blank"
+//           rel="noopener noreferrer"
+//         >
+//           Learn React
+//         </a>
+//       </header>
+//     </div>
+//   );
+// }
+
+// export default App;
