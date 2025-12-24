@@ -4,7 +4,7 @@ import { useAuth } from '../hooks/useAuth';
 import SearchBar from '../components/common/SearchBar';
 import Button from '../components/common/Button';
 import Modal from '../components/common/Modal';
-import ReportGenerator from '../components/reports/ReportGenerator';
+import ReportGenerator from '../components/reports/ReportsGenerator';
 import ReportPreview from '../components/reports/ReportPreview';
 import { 
   DocumentArrowDownIcon,

@@ -1,4 +1,3 @@
-// src/components/common/Tooltip.tsx
 import React, { useState } from 'react';
 
 interface TooltipProps {
@@ -12,7 +11,7 @@ export const Tooltip: React.FC<TooltipProps> = ({
   content, 
   children, 
   position = 'top',
-  delay = 200 
+  delay = 200
 }) => {
   const [isVisible, setIsVisible] = useState(false);
   const [timeoutId, setTimeoutId] = useState<NodeJS.Timeout | null>(null);

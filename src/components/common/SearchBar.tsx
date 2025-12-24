@@ -397,7 +397,7 @@ const SearchBar: React.FC<SearchBarProps> = ({
                                 : [];
                               const updated = e.target.checked
                                 ? [...current, option.value]
-                                : current.filter(v => v !== option.value);
+                                : current.filter((v: string) => v !== option.value);
                               handleFilterChange(filter.id, updated);
                             }}
                             className="h-4 w-4 text-blue-600 focus:ring-blue-500 border-gray-300 rounded"

@@ -98,28 +98,28 @@ const SearchBarExamples: React.FC = () => {
     {
       id: '1',
       label: 'Laptop Pro 15"',
-      type: 'item',
+      type: 'item' as const,
       description: 'SKU: ITM-001 • Category: Electronics',
       icon: <CubeIcon className="w-4 h-4" />
     },
     {
       id: '2',
       label: 'TechParts Inc.',
-      type: 'supplier',
+      type: 'supplier' as const,
       description: 'Supplier • Electronics & Components',
       icon: <TruckIcon className="w-4 h-4" />
     },
     {
       id: '3',
       label: 'Wireless Mouse',
-      type: 'item',
+      type: 'item' as const,
       description: 'SKU: ITM-002 • Category: Electronics',
       icon: <CubeIcon className="w-4 h-4" />
     },
     {
       id: '4',
       label: 'Office Supplies',
-      type: 'category',
+      type: 'category' as const,
       description: 'Category • 189 items',
       icon: <TagIcon className="w-4 h-4" />
     }

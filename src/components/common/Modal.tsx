@@ -445,7 +445,8 @@ export const AlertModal: React.FC<
       {...modalProps}
       message={message}
       confirmText={buttonText}
-      cancelText={null}
+      cancelText={undefined}
+      onClose={onClose}
       onConfirm={onClose}
       onCancel={undefined}
       variant={variant}

@@ -29,7 +29,7 @@ const ModalExamples: React.FC = () => {
   const inputRef = useRef<HTMLInputElement>(null);
   
   // Using the useModal hook
-  const { isOpen: isHookModalOpen, open: openHookModal, close: closeHookModal } = useModal();
+  const { isOpen: hookModal, open: openHookModal, close: closeHookModal } = useModal();
 
   // Handle confirm action
   const handleConfirm = () => {
@@ -47,6 +47,8 @@ const ModalExamples: React.FC = () => {
       console.log('Item deleted!');
     }, 1500);
   };
+
+  const hooksModal = useModal();
 
   // Simulate progress
   const simulateProgress = () => {
@@ -191,7 +193,7 @@ const ModalExamples: React.FC = () => {
         onClose={() => setActiveModal(null)}
         title="Basic Modal"
         size="md"
-        initialFocusRef={inputRef}
+        initialFocusRef={inputRef as React.RefObject<HTMLElement>}
       >
         <div className="space-y-4">
           <p className="text-gray-600">
@@ -444,7 +446,7 @@ const ModalExamples: React.FC = () => {
 
       {/* Hook Modal Example */}
       <Modal
-        {...isHookModalOpen.modalProps}
+        {...hooksModal.modalProps}
         title="Modal using Hook"
         size="sm"
       >

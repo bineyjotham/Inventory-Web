@@ -135,6 +135,17 @@ import {
 } from '@heroicons/react/24/outline';
 import toast from 'react-hot-toast';
 
+interface StatCard {
+  title: string;
+  value: string;
+  change: string;
+  trend: 'up' | 'down';
+  icon: React.ComponentType<{ className?: string }>;
+  color: 'blue' | 'green' | 'orange' | 'purple';
+  description: string;
+  onClick?: () => void;
+}
+
 const Dashboard: React.FC = () => {
   const { user } = useAuth();
   const [isRefreshing, setIsRefreshing] = useState(false);
@@ -152,7 +163,7 @@ const Dashboard: React.FC = () => {
     // Simulate API call
     setTimeout(() => {
       // Mock data based on user role
-      const baseStats = [
+      const baseStats: StatCard[] = [
         {
           title: 'Total Items',
           value: '1,248',
@@ -214,6 +225,8 @@ const Dashboard: React.FC = () => {
           icon: ShoppingCartIcon,
           color: 'blue' as const,
           description: 'Active purchase orders',
+          onClick: () => {toast.success('Viewing active orders...');
+          },
         });
       }
 

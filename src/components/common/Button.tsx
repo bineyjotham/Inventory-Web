@@ -1,4 +1,3 @@
-// src/components/common/Button.tsx
 import React, { forwardRef, ButtonHTMLAttributes } from 'react';
 
 export type ButtonVariant = 
@@ -41,10 +40,8 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps>(({
 }, ref) => {
   const isDisabled = disabled || loading;
   
-  // Base classes
   const baseClasses = 'inline-flex items-center justify-center font-medium transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-offset-2 disabled:opacity-50 disabled:cursor-not-allowed';
   
-  // Size classes
   const sizeClasses = {
     xs: 'px-2.5 py-1.5 text-xs',
     sm: 'px-3 py-2 text-sm',
@@ -53,7 +50,6 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps>(({
     xl: 'px-6 py-3.5 text-base'
   };
   
-  // Variant classes
   const variantClasses = {
     primary: 'bg-blue-600 text-white hover:bg-blue-700 active:bg-blue-800 focus:ring-blue-500 border border-transparent',
     secondary: 'bg-gray-100 text-gray-900 hover:bg-gray-200 active:bg-gray-300 focus:ring-gray-500 border border-gray-300',
@@ -64,13 +60,10 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps>(({
     warning: 'bg-orange-500 text-white hover:bg-orange-600 active:bg-orange-700 focus:ring-orange-500 border border-transparent'
   };
   
-  // Rounded classes
   const roundedClasses = rounded ? 'rounded-full' : 'rounded-lg';
   
-  // Width classes
   const widthClasses = fullWidth ? 'w-full' : '';
   
-  // Combined classes
   const buttonClasses = [
     baseClasses,
     sizeClasses[size],
@@ -80,7 +73,6 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps>(({
     className
   ].filter(Boolean).join(' ');
   
-  // Loading spinner
   const LoadingSpinner = () => (
     <svg 
       className="animate-spin -ml-1 mr-2 h-4 w-4" 
@@ -104,14 +96,12 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps>(({
     </svg>
   );
   
-  // Icon wrapper
   const IconWrapper = ({ children }: { children: React.ReactNode }) => (
     <span className={`flex items-center ${iconPosition === 'left' ? 'mr-2' : 'ml-2'}`}>
       {children}
     </span>
   );
-  
-  // Render button with optional tooltip wrapper
+
   const ButtonContent = () => (
     <>
       {loading && <LoadingSpinner />}
@@ -188,7 +178,7 @@ FabButton.displayName = 'FabButton';
 export const ButtonGroup = ({ children, className = '' }: { children: React.ReactNode; className?: string }) => (
   <div className={`inline-flex rounded-lg border border-gray-300 overflow-hidden ${className}`}>
     {React.Children.map(children, (child, index) => {
-      if (React.isValidElement(child)) {
+      if (React.isValidElement<{ className?: string; variant?: string}>(child)) {
         return React.cloneElement(child as React.ReactElement<any>, {
           className: `rounded-none border-none ${
             index === 0 ? 'rounded-l-lg' : 

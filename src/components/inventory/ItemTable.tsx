@@ -267,16 +267,28 @@ const ItemTable: React.FC<ItemTableProps> = ({
   const totalPages = Math.ceil(filteredAndSortedItems.length / pageSize);
 
   // Handle sort
-  const handleSort = (field: string) => {
-    if (onSort) {
-      const newDirection = sortBy === field && sortDirection === 'asc' ? 'desc' : 'asc';
-      onSort(field, newDirection);
-    } else {
-      const newDirection = localSortBy === field && localSortDirection === 'asc' ? 'desc' : 'asc';
-      setLocalSortBy(field);
-      setLocalSortDirection(newDirection);
-    }
-  };
+  // const handleSort = (field: string) => {
+  //   if (onSort) {
+  //     const newDirection = sortBy === field && sortDirection === 'asc' ? 'desc' : 'asc';
+  //     onSort(field, newDirection);
+  //   } else {
+  //     const newDirection = localSortBy === field && localSortDirection === 'asc' ? 'desc' : 'asc';
+  //     setLocalSortBy(field);
+  //     setLocalSortDirection(newDirection);
+  //   }
+  // };
+type SortField = 'category' | 'name' | 'value' | 'sku' | 'quantity' | 'lastUpdated';
+
+const handleSort = (field: SortField) => {
+  if (onSort) {
+    const newDirection = sortBy === field && sortDirection === 'asc' ? 'desc' : 'asc';
+    onSort(field, newDirection);
+  } else {
+    const newDirection = localSortBy === field && localSortDirection === 'asc' ? 'desc' : 'asc';
+    setLocalSortBy(field);
+    setLocalSortDirection(newDirection);
+  }
+};
 
   // Handle select all
   const handleSelectAll = (e: React.ChangeEvent<HTMLInputElement>) => {

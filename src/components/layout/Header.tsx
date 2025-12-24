@@ -7,6 +7,7 @@ import {
   MagnifyingGlassIcon,
   ChevronDownIcon,
   ArrowRightOnRectangleIcon,
+  BuildingStorefrontIcon,
   Cog6ToothIcon,
   UserCircleIcon
 } from '@heroicons/react/24/outline';
