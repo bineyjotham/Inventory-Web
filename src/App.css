@@ -1,8 +1,6 @@
-/* Add these styles to your existing Tailwind imports */
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-
 
 @keyframes float {
   0%, 100% {
