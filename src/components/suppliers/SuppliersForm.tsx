@@ -1,4 +1,3 @@
-// src/components/suppliers/SupplierForm.tsx
 import React, { useState } from 'react';
 import { Supplier } from '../../types';
 import Button from '../common/Button';

@@ -1,4 +1,3 @@
-// src/pages/Suppliers.tsx
 import React, { useState } from 'react';
 import { useAuth } from '../hooks/useAuth';
 import SearchBar from '../components/common/SearchBar';

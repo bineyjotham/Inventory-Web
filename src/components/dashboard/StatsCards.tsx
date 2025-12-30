@@ -1,4 +1,3 @@
-// src/components/dashboard/StatsCards.tsx
 import React, { useState } from 'react';
 import { 
   ArrowTrendingUpIcon, 
@@ -11,8 +10,6 @@ import {
   TruckIcon,
   UserGroupIcon,
   ClockIcon,
-  CheckCircleIcon,
-  XCircleIcon,
   InformationCircleIcon,
   ChartBarIcon
 } from '@heroicons/react/24/outline';

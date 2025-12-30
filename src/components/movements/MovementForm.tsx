@@ -1,18 +1,9 @@
-// src/components/movements/MovementForm.tsx
 import React, { useState } from 'react';
 import Button from '../common/Button';
 import {
   ArrowDownCircleIcon,
   ArrowUpCircleIcon,
   AdjustmentsHorizontalIcon,
-  BuildingOfficeIcon,
-  CheckCircleIcon,
-  XCircleIcon,
-  EnvelopeIcon,
-  PhoneIcon,
-  CurrencyDollarIcon,
-  CubeIcon,
-  ChartBarIcon
 } from '@heroicons/react/24/outline';
 
 interface MovementFormProps {

@@ -1,4 +1,3 @@
-// src/components/inventory/CategoryFilter.tsx
 import React from 'react';
 import { FunnelIcon } from '@heroicons/react/24/outline';
 

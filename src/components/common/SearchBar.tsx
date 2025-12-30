@@ -1,4 +1,3 @@
-// src/components/common/SearchBar.tsx
 import React, { useState, useEffect, useRef, useCallback } from 'react';
 import { 
   MagnifyingGlassIcon, 
@@ -9,7 +8,6 @@ import {
   ChevronDownIcon,
   AdjustmentsHorizontalIcon
 } from '@heroicons/react/24/outline';
-import Button from './Button';
 
 export interface SearchFilter {
   id: string;
@@ -115,14 +113,12 @@ const SearchBar: React.FC<SearchBarProps> = ({
   const dropdownRef = useRef<HTMLDivElement>(null);
   const debounceTimeout = useRef<NodeJS.Timeout>(null);
 
-  // Size classes
   const sizeClasses = {
     sm: 'h-9 text-sm',
     md: 'h-11 text-sm',
     lg: 'h-14 text-base'
   };
 
-  // Variant classes
   const variantClasses = {
     default: 'bg-white border border-gray-300 hover:border-gray-400 focus-within:border-blue-500 focus-within:ring-2 focus-within:ring-blue-500',
     filled: 'bg-gray-100 border border-transparent hover:bg-gray-200 focus-within:bg-white focus-within:border-blue-500 focus-within:ring-2 focus-within:ring-blue-500',
@@ -130,12 +126,10 @@ const SearchBar: React.FC<SearchBarProps> = ({
     minimal: 'bg-transparent border-0 border-b border-gray-300 hover:border-gray-400 focus-within:border-blue-500'
   };
 
-  // Update local value when prop changes
   useEffect(() => {
     setLocalValue(value);
   }, [value]);
 
-  // Debounce implementation
   useEffect(() => {
     if (debounceTimeout.current) {
       clearTimeout(debounceTimeout.current);
@@ -157,7 +151,6 @@ const SearchBar: React.FC<SearchBarProps> = ({
     };
   }, [localValue, value, onChange, debounceTime]);
 
-  // Handle click outside
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
       if (
@@ -175,7 +168,6 @@ const SearchBar: React.FC<SearchBarProps> = ({
     return () => document.removeEventListener('mousedown', handleClickOutside);
   }, []);
 
-  // Handle keyboard navigation
   const handleKeyDown = useCallback((e: React.KeyboardEvent<HTMLInputElement>) => {
     if (!showDropdown || (!suggestions.length && !history.length)) return;
 
@@ -215,7 +207,6 @@ const SearchBar: React.FC<SearchBarProps> = ({
     }
   }, [showDropdown, suggestions, history, selectedSuggestionIndex, localValue]);
 
-  // Handle search
   const handleSearch = () => {
     if (onSearch && localValue.trim()) {
       onSearch(localValue.trim(), activeFilters);
@@ -223,7 +214,6 @@ const SearchBar: React.FC<SearchBarProps> = ({
     }
   };
 
-  // Handle clear
   const handleClear = () => {
     setLocalValue('');
     onChange('');
@@ -233,7 +223,6 @@ const SearchBar: React.FC<SearchBarProps> = ({
     }
   };
 
-  // Handle suggestion select
   const handleSuggestionSelect = (suggestion: SearchSuggestion) => {
     setLocalValue(suggestion.label);
     onChange(suggestion.label);
@@ -246,7 +235,6 @@ const SearchBar: React.FC<SearchBarProps> = ({
     }
   };
 
-  // Handle history select
   const handleHistorySelect = (historyItem: SearchHistoryItem) => {
     setLocalValue(historyItem.query);
     onChange(historyItem.query);
@@ -256,7 +244,6 @@ const SearchBar: React.FC<SearchBarProps> = ({
     setShowDropdown(false);
   };
 
-  // Handle filter change
   const handleFilterChange = (filterId: string, filterValue: any) => {
     const updatedFilters = {
       ...activeFilters,
@@ -268,7 +255,6 @@ const SearchBar: React.FC<SearchBarProps> = ({
     }
   };
 
-  // Handle focus
   const handleFocus = () => {
     setIsFocused(true);
     if (localValue || suggestions.length > 0 || history.length > 0) {
@@ -276,7 +262,6 @@ const SearchBar: React.FC<SearchBarProps> = ({
     }
   };
 
-  // Handle input change
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const newValue = e.target.value;
     setLocalValue(newValue);
@@ -285,12 +270,10 @@ const SearchBar: React.FC<SearchBarProps> = ({
     }
   };
 
-  // Filter active filters count
   const activeFiltersCount = Object.values(activeFilters).filter(v => 
     v !== undefined && v !== null && v !== '' && !(Array.isArray(v) && v.length === 0)
   ).length;
 
-  // Render search types
   const renderSearchTypes = () => {
     if (!searchTypes.length) return null;
 
@@ -314,7 +297,6 @@ const SearchBar: React.FC<SearchBarProps> = ({
     );
   };
 
-  // Render filters
   const renderFilters = () => {
     if (!showFilters || !filters.length) return null;
 
@@ -434,7 +416,6 @@ const SearchBar: React.FC<SearchBarProps> = ({
     );
   };
 
-  // Render dropdown content
   const renderDropdownContent = () => {
     if (!showDropdown) return null;
 
@@ -449,7 +430,6 @@ const SearchBar: React.FC<SearchBarProps> = ({
         ref={dropdownRef}
         className={`absolute top-full left-0 right-0 mt-1 bg-white border border-gray-200 rounded-lg shadow-lg z-40 overflow-hidden ${dropdownClassName}`}
       >
-        {/* Suggestions */}
         {hasSuggestions && (
           <div>
             <div className="px-4 py-2 bg-gray-50 border-b border-gray-200">
@@ -489,7 +469,6 @@ const SearchBar: React.FC<SearchBarProps> = ({
           </div>
         )}
 
-        {/* Recent Searches */}
         {hasRecentSearches && (
           <div>
             <div className="px-4 py-2 bg-gray-50 border-b border-gray-200">
@@ -526,7 +505,6 @@ const SearchBar: React.FC<SearchBarProps> = ({
                   <button
                     onClick={(e) => {
                       e.stopPropagation();
-                      // Handle re-search with this query
                       setLocalValue(item.query);
                       onChange(item.query);
                     }}
@@ -540,7 +518,6 @@ const SearchBar: React.FC<SearchBarProps> = ({
           </div>
         )}
 
-        {/* Search History (when input is empty) */}
         {hasHistory && (
           <div>
             <div className="px-4 py-2 bg-gray-50 border-b border-gray-200">
@@ -580,7 +557,6 @@ const SearchBar: React.FC<SearchBarProps> = ({
           </div>
         )}
 
-        {/* Quick Filters */}
         {filters.length > 0 && (
           <div className="px-4 py-3 border-t border-gray-200 bg-gray-50">
             <div className="flex items-center justify-between">
@@ -624,7 +600,6 @@ const SearchBar: React.FC<SearchBarProps> = ({
           isFocused ? 'ring-2 ring-blue-500 ring-opacity-50' : ''
         }`}
       >
-        {/* Search Icon */}
         <div className="pl-3 pr-2 text-gray-400">
           {loading ? (
             <ArrowPathIcon className="w-5 h-5 animate-spin" />
@@ -633,10 +608,8 @@ const SearchBar: React.FC<SearchBarProps> = ({
           )}
         </div>
 
-        {/* Search Types */}
         {renderSearchTypes()}
 
-        {/* Input */}
         <input
           ref={inputRef}
           type="text"
@@ -653,14 +626,12 @@ const SearchBar: React.FC<SearchBarProps> = ({
           aria-label="Search"
         />
 
-        {/* Loading/Debouncing Indicator */}
         {(loading || isDebouncing) && (
           <div className="px-2">
             <div className="w-4 h-4 border-2 border-gray-300 border-t-blue-600 rounded-full animate-spin" />
           </div>
         )}
 
-        {/* Clear Button */}
         {showClearButton && localValue && (
           <button
             type="button"
@@ -672,10 +643,8 @@ const SearchBar: React.FC<SearchBarProps> = ({
           </button>
         )}
 
-        {/* Filters Button */}
         {renderFilters()}
 
-        {/* Search Button */}
         {showSearchButton && (
           <button
             type="button"
@@ -690,7 +659,6 @@ const SearchBar: React.FC<SearchBarProps> = ({
         )}
       </div>
 
-      {/* Active Filters Badge */}
       {activeFiltersCount > 0 && (
         <div className="flex flex-wrap gap-2 mt-2">
           {Object.entries(activeFilters).map(([key, value]) => {
@@ -737,10 +705,8 @@ const SearchBar: React.FC<SearchBarProps> = ({
         </div>
       )}
 
-      {/* Dropdown */}
       {renderDropdownContent()}
 
-      {/* Advanced Search Toggle */}
       {showFilters && filters.length > 0 && (
         <button
           type="button"
@@ -758,7 +724,6 @@ const SearchBar: React.FC<SearchBarProps> = ({
   );
 };
 
-// Pre-styled search bar variants
 export const CompactSearchBar: React.FC<Omit<SearchBarProps, 'size' | 'variant' | 'showSearchButton'>> = (props) => (
   <SearchBar
     {...props}
@@ -803,7 +768,6 @@ export const AdvancedSearchBar: React.FC<SearchBarProps> = (props) => (
   />
 );
 
-// Hook for search state management
 export const useSearch = (initialQuery = '', initialFilters = {}) => {
   const [query, setQuery] = useState(initialQuery);
   const [filters, setFilters] = useState<Record<string, any>>(initialFilters);
@@ -814,7 +778,6 @@ export const useSearch = (initialQuery = '', initialFilters = {}) => {
   const handleSearch = useCallback(async (searchQuery: string, searchFilters?: Record<string, any>) => {
     setIsSearching(true);
     
-    // Save to history
     const historyItem: SearchHistoryItem = {
       id: Date.now().toString(),
       query: searchQuery,
@@ -826,7 +789,6 @@ export const useSearch = (initialQuery = '', initialFilters = {}) => {
     
     try {
       // Simulate API call
-      // In real app, this would be your search API call
       await new Promise(resolve => setTimeout(resolve, 500));
       
       // Mock results

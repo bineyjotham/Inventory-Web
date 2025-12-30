@@ -1,4 +1,3 @@
-// src/components/examples/SearchBarExamples.tsx
 import React, { useState } from 'react';
 import SearchBar, { 
   CompactSearchBar, 
@@ -14,7 +13,6 @@ import {
   CubeIcon,
   TruckIcon,
   TagIcon,
-  CalendarIcon
 } from '@heroicons/react/24/outline';
 
 const SearchBarExamples: React.FC = () => {

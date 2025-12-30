@@ -1,117 +1,3 @@
-// // src/pages/Dashboard.tsx
-// import React from 'react';
-// import { useAuth } from '../hooks/useAuth';
-// import StatsCards from '../components/dashboard/StatsCards';
-// import InventoryChart from '../components/dashboard/InventoryChart';
-// import RecentActivity from '../components/dashboard/RecentActivity';
-// import { 
-//   ArrowTrendingUpIcon, 
-//   ArrowTrendingDownIcon,
-//   ExclamationTriangleIcon,
-//   CubeIcon,
-//   CurrencyDollarIcon,
-//   ArrowsRightLeftIcon
-// } from '@heroicons/react/24/outline';
-
-// const Dashboard: React.FC = () => {
-//   const { user } = useAuth();
-
-//   const stats = [
-//     {
-//       title: 'Total Items',
-//       value: '1,248',
-//       change: '+12.5%',
-//       trend: 'up',
-//       icon: CubeIcon,
-//       color: 'blue'
-//     },
-//     {
-//       title: 'Low Stock Items',
-//       value: '24',
-//       change: '-3.2%',
-//       trend: 'down',
-//       icon: ExclamationTriangleIcon,
-//       color: 'orange'
-//     },
-//     {
-//       title: 'Total Value',
-//       value: '$248,950',
-//       change: '+8.7%',
-//       trend: 'up',
-//       icon: CurrencyDollarIcon,
-//       color: 'green'
-//     },
-//     {
-//       title: 'Movements Today',
-//       value: '47',
-//       change: '+15.3%',
-//       trend: 'up',
-//       icon: ArrowsRightLeftIcon,
-//       color: 'purple'
-//     }
-//   ];
-
-//   return (
-//     <div className="space-y-6">
-//       <div>
-//         <h1 className="text-2xl font-bold text-gray-900">Dashboard</h1>
-//         <p className="text-gray-600">
-//           Welcome back, {user?.name}. Here's what's happening with your inventory.
-//         </p>
-//       </div>
-
-//       <StatsCards stats={stats} />
-
-//       <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-//         <div className="bg-white p-6 rounded-xl shadow-sm border border-gray-200">
-//           <h2 className="text-lg font-semibold text-gray-900 mb-4">Inventory Overview</h2>
-//           <InventoryChart />
-//         </div>
-        
-//         <div className="bg-white p-6 rounded-xl shadow-sm border border-gray-200">
-//           <h2 className="text-lg font-semibold text-gray-900 mb-4">Recent Activity</h2>
-//           <RecentActivity />
-//         </div>
-//       </div>
-
-//       {/* Quick Stats for Managers and Admins */}
-//       {(user?.role === 'admin' || user?.role === 'manager') && (
-//         <div className="bg-white p-6 rounded-xl shadow-sm border border-gray-200">
-//           <h2 className="text-lg font-semibold text-gray-900 mb-4">Performance Metrics</h2>
-//           <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-//             <div className="p-4 bg-blue-50 rounded-lg">
-//               <div className="text-sm text-blue-700 font-medium">Turnover Rate</div>
-//               <div className="text-2xl font-bold text-blue-900">4.2x</div>
-//               <div className="flex items-center text-sm text-blue-600">
-//                 <ArrowTrendingUpIcon className="w-4 h-4 mr-1" />
-//                 12% improvement
-//               </div>
-//             </div>
-//             <div className="p-4 bg-green-50 rounded-lg">
-//               <div className="text-sm text-green-700 font-medium">Stock Accuracy</div>
-//               <div className="text-2xl font-bold text-green-900">98.7%</div>
-//               <div className="flex items-center text-sm text-green-600">
-//                 <ArrowTrendingUpIcon className="w-4 h-4 mr-1" />
-//                 2.1% increase
-//               </div>
-//             </div>
-//             <div className="p-4 bg-purple-50 rounded-lg">
-//               <div className="text-sm text-purple-700 font-medium">Avg. Order Time</div>
-//               <div className="text-2xl font-bold text-purple-900">2.3 days</div>
-//               <div className="flex items-center text-sm text-purple-600">
-//                 <ArrowTrendingDownIcon className="w-4 h-4 mr-1" />
-//                 15% faster
-//               </div>
-//             </div>
-//           </div>
-//         </div>
-//       )}
-//     </div>
-//   );
-// };
-
-// export default Dashboard;
-// src/pages/Dashboard.tsx - Updated with StatsCards
 import React, { useState, useEffect } from 'react';
 import { useAuth } from '../hooks/useAuth';
 import StatsCards from '../components/dashboard/StatsCards';
@@ -125,13 +11,11 @@ import {
   CurrencyDollarIcon,
   CubeIcon,
   ArrowsRightLeftIcon,
-  ChartBarIcon,
   BellIcon,
   ArrowPathIcon,
   ShoppingCartIcon,
   CheckCircleIcon,
   InformationCircleIcon,
-  AdjustmentsHorizontalIcon
 } from '@heroicons/react/24/outline';
 import toast from 'react-hot-toast';
 

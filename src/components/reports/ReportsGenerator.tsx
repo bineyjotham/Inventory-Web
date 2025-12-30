@@ -2,9 +2,6 @@
 import React, { useState } from 'react';
 import Button from '../common/Button';
 import { 
-  ArrowTrendingUpIcon, 
-  ArrowTrendingDownIcon,
-  ExclamationTriangleIcon,
   CubeIcon,
   CurrencyDollarIcon,
   ArrowsRightLeftIcon,

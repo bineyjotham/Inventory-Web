@@ -1,9 +1,7 @@
-// src/components/dashboard/InventoryChart.tsx
 import React, { useState } from 'react';
 import {
   ChartBarIcon,
   ArrowTrendingUpIcon,
-  ArrowTrendingDownIcon
 } from '@heroicons/react/24/outline';
 
 const InventoryChart: React.FC = () => {
@@ -24,7 +22,6 @@ const InventoryChart: React.FC = () => {
 
   return (
     <div className="space-y-4">
-      {/* Chart Header */}
       <div className="flex items-center justify-between">
         <div className="flex items-center gap-4">
           <button
@@ -56,9 +53,7 @@ const InventoryChart: React.FC = () => {
         </div>
       </div>
 
-      {/* Chart Visualization */}
       <div className="relative pt-8">
-        {/* Grid Lines */}
         <div className="absolute inset-0 flex flex-col justify-between">
           {[0, 0.25, 0.5, 0.75, 1].map((position) => (
             <div
@@ -69,7 +64,6 @@ const InventoryChart: React.FC = () => {
           ))}
         </div>
 
-        {/* Bars */}
         <div className="relative flex items-end justify-between h-64">
           {data.categories.map((category, index) => {
             const value = activeDataset === 'quantity' ? data.quantity[index] : data.value[index];
@@ -78,14 +72,12 @@ const InventoryChart: React.FC = () => {
             
             return (
               <div key={category} className="flex flex-col items-center w-1/5 px-2">
-                {/* Value Label */}
                 <div className="text-xs font-medium text-gray-700 mb-2">
                   {activeDataset === 'quantity' 
                     ? value.toLocaleString() 
                     : '$' + value.toLocaleString()}
                 </div>
                 
-                {/* Bar */}
                 <div
                   className="w-3/4 rounded-t-lg transition-all duration-500 hover:opacity-80"
                   style={{
@@ -94,7 +86,6 @@ const InventoryChart: React.FC = () => {
                     minHeight: '8px'
                   }}
                 >
-                  {/* Bar Fill Animation */}
                   <div 
                     className="h-full rounded-t-lg opacity-90"
                     style={{ 
@@ -104,7 +95,6 @@ const InventoryChart: React.FC = () => {
                   />
                 </div>
                 
-                {/* Category Label */}
                 <div className="text-xs text-gray-600 mt-2 text-center truncate w-full">
                   {category}
                 </div>
@@ -113,7 +103,6 @@ const InventoryChart: React.FC = () => {
           })}
         </div>
 
-        {/* Legend */}
         <div className="flex flex-wrap gap-3 mt-6 pt-4 border-t border-gray-200">
           {data.categories.map((category, index) => (
             <div key={category} className="flex items-center">
@@ -127,7 +116,6 @@ const InventoryChart: React.FC = () => {
         </div>
       </div>
 
-      {/* Summary */}
       <div className="grid grid-cols-2 gap-4 mt-6">
         <div className="bg-blue-50 p-4 rounded-lg">
           <div className="flex items-center justify-between">

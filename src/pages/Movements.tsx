@@ -1,4 +1,3 @@
-// src/pages/Movements.tsx
 import React, { useState } from 'react';
 import { useAuth } from '../hooks/useAuth';
 import SearchBar from '../components/common/SearchBar';
@@ -8,11 +7,9 @@ import MovementForm from '../components/movements/MovementForm';
 import { 
   PlusIcon, 
   ArrowDownTrayIcon,
-  FunnelIcon,
   ArrowDownCircleIcon,
   ArrowUpCircleIcon,
   AdjustmentsHorizontalIcon,
-  CalendarIcon,
   ClockIcon,
   UserCircleIcon
 } from '@heroicons/react/24/outline';
@@ -90,7 +87,7 @@ const Movements: React.FC = () => {
                          movement.user.toLowerCase().includes(searchQuery.toLowerCase());
     const matchesType = selectedType === 'all' || movement.type === selectedType;
     
-    // Date filtering (simplified)
+    // Date filtering
     const movementDate = new Date(movement.date);
     const now = new Date();
     const daysDiff = Math.floor((now.getTime() - movementDate.getTime()) / (1000 * 60 * 60 * 24));

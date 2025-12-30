@@ -1,4 +1,3 @@
-// src/pages/Reports.tsx
 import React, { useState } from 'react';
 import { useAuth } from '../hooks/useAuth';
 import SearchBar from '../components/common/SearchBar';
@@ -13,12 +12,9 @@ import {
   CalendarIcon,
   ChartBarIcon,
   ArrowTrendingUpIcon,
-  ArrowTrendingDownIcon,
-  FunnelIcon,
   PrinterIcon,
   EyeIcon,
   ClockIcon,
-  UserIcon,
   CubeIcon,
   ArrowsRightLeftIcon,
   CurrencyDollarIcon,

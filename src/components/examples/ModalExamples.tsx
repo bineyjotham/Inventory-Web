@@ -1,4 +1,3 @@
-// src/components/examples/ModalExamples.tsx
 import React, { useState, useRef } from 'react';
 import Modal, {
   ConfirmationModal,

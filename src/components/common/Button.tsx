@@ -111,7 +111,6 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps>(({
     </>
   );
   
-  // If there's a tooltip, wrap the button in a tooltip container
   if (tooltip) {
     return (
       <div className="relative group">
@@ -152,7 +151,6 @@ Button.displayName = 'Button';
 
 export default Button;
 
-// Additional specialized button components
 export const IconButton = forwardRef<HTMLButtonElement, Omit<ButtonProps, 'children'>>((props, ref) => (
   <Button
     ref={ref}
@@ -194,7 +192,6 @@ export const ButtonGroup = ({ children, className = '' }: { children: React.Reac
 
 ButtonGroup.displayName = 'ButtonGroup';
 
-// Pre-styled button components for common use cases
 export const PrimaryButton = forwardRef<HTMLButtonElement, Omit<ButtonProps, 'variant'>>((props, ref) => (
   <Button ref={ref} variant="primary" {...props} />
 ));

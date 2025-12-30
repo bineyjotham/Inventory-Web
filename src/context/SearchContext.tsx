@@ -1,6 +1,5 @@
-// src/context/SearchContext.tsx
 import React, { createContext, useContext, useReducer, useCallback } from 'react';
-import { SearchFilter, SearchHistoryItem } from '../components/common/SearchBar';
+import { SearchHistoryItem } from '../components/common/SearchBar';
 
 interface SearchState {
   query: string;

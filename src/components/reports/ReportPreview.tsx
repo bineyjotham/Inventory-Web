@@ -1,14 +1,7 @@
-// src/components/reports/ReportPreview.tsx
 import React from 'react';
 import { Report } from '../../types';
 import Button from '../common/Button';
 import { 
-  ArrowTrendingUpIcon, 
-  ArrowTrendingDownIcon,
-  ExclamationTriangleIcon,
-  CubeIcon,
-  CurrencyDollarIcon,
-  ArrowsRightLeftIcon,
   PrinterIcon,
   DocumentArrowDownIcon
 } from '@heroicons/react/24/outline';

@@ -1,4 +1,3 @@
-// src/pages/Login.tsx
 import React, { useState } from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
 import { useAuth } from '../hooks/useAuth';
@@ -47,7 +46,7 @@ const Login: React.FC = () => {
     e.preventDefault();
     setLoading(true);
 
-    // For demo purposes - in real app, validate with backend
+    // For demo purposes 
     setTimeout(() => {
       let role: 'admin' | 'manager' | 'staff' = 'staff';
       
@@ -69,7 +68,7 @@ const Login: React.FC = () => {
   return (
     <div className="min-h-screen bg-gradient-to-br from-blue-50 to-gray-100 flex items-center justify-center p-4">
       <div className="max-w-6xl w-full grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
-        {/* Left side - Branding and Info */}
+        {/* Left side - Branding and Features */}
         <div className="hidden lg:block">
           <div className="bg-white rounded-2xl shadow-xl p-8 border border-gray-200">
             <div className="flex items-center gap-3 mb-6">

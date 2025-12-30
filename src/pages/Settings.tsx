@@ -1,4 +1,3 @@
-// src/pages/Settings.tsx
 import React, { useState } from 'react';
 import { useAuth } from '../hooks/useAuth';
 import Button from '../components/common/Button';
@@ -9,10 +8,6 @@ import {
   ShieldCheckIcon,
   DocumentTextIcon,
   ServerIcon,
-  EyeIcon,
-  EyeSlashIcon,
-  CheckIcon,
-  ExclamationTriangleIcon
 } from '@heroicons/react/24/outline';
 
 const Settings: React.FC = () => {

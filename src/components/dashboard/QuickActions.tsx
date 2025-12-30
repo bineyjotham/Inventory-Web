@@ -10,15 +10,12 @@ import {
   TruckIcon,
   UserPlusIcon,
   CogIcon,
-  DocumentPlusIcon,
-  DocumentArrowDownIcon,
   QrCodeIcon,
   MagnifyingGlassIcon,
   ExclamationCircleIcon,
   ClipboardDocumentListIcon,
   PrinterIcon,
   BellIcon,
-  ClockIcon,
   ShoppingCartIcon,
   TagIcon,
   UsersIcon,
@@ -63,7 +60,6 @@ const QuickActions: React.FC<QuickActionsProps> = ({
   const [showMovementModal, setShowMovementModal] = useState(false);
   const [showReportModal, setShowReportModal] = useState(false);
 
-  // Common action handlers
   const handleAddItem = async () => {
     setShowAddItemModal(true);
     if (onActionClick) onActionClick('add-item');
@@ -154,7 +150,6 @@ const QuickActions: React.FC<QuickActionsProps> = ({
     if (onActionClick) onActionClick('calculate-value');
   };
 
-  // All available quick actions
   const allActions: QuickAction[] = [
     {
       id: 'add-item',
@@ -322,7 +317,6 @@ const QuickActions: React.FC<QuickActionsProps> = ({
     }
   ];
 
-  // Filter actions by user role
   const filteredActions = allActions
     .filter(action => action.roles.includes(userRole))
     .slice(0, maxItems);

@@ -1,4 +1,3 @@
-// src/context/AuthContext.tsx
 import React, { createContext, useState, useContext, ReactNode } from 'react';
 import { User, UserRole } from '../types';
 
@@ -48,7 +47,7 @@ export const AuthProvider: React.FC<{ children: ReactNode }> = ({ children }) =>
     
     // Simulate API call
     setTimeout(() => {
-      // Demo validation - in real app, validate with backend
+      // Demo validation
       if (email && password) {
         const newUser = mockUsers[role] || {
           id: Date.now().toString(),

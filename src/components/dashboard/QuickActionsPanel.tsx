@@ -1,4 +1,3 @@
-// src/components/dashboard/QuickActionsPanel.tsx
 import React, { useState } from 'react';
 import { UserRole } from '../../types';
 import QuickActions from './QuickActions';

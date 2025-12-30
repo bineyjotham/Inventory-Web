@@ -1,4 +1,3 @@
-// src/components/dashboard/RecentActivity.tsx
 import React from 'react';
 import { 
   ArrowDownCircleIcon,

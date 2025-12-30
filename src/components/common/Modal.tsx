@@ -1,4 +1,3 @@
-// src/components/common/Modal.tsx
 import React, { useEffect, useRef, useCallback } from 'react';
 import { XMarkIcon } from '@heroicons/react/24/outline';
 
@@ -64,7 +63,6 @@ const Modal: React.FC<ModalProps> = ({
   const previousActiveElement = useRef<HTMLElement | null>(null);
   const isAnimating = useRef(false);
 
-  // Size classes
   const sizeClasses = {
     xs: 'max-w-xs',
     sm: 'max-w-sm',
@@ -74,7 +72,6 @@ const Modal: React.FC<ModalProps> = ({
     full: 'max-w-[95vw] max-h-[95vh]'
   };
 
-  // Position classes
   const positionClasses = {
     center: 'top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2',
     top: 'top-4 left-1/2 -translate-x-1/2',
@@ -83,7 +80,6 @@ const Modal: React.FC<ModalProps> = ({
     right: 'top-1/2 right-4 -translate-y-1/2'
   };
 
-  // Animation classes based on position
   const getAnimationClasses = () => {
     if (!isOpen) return 'opacity-0 scale-95';
 
@@ -103,7 +99,6 @@ const Modal: React.FC<ModalProps> = ({
     }
   };
 
-  // Handle ESC key
   const handleKeyDown = useCallback((e: KeyboardEvent) => {
     if (e.key === 'Escape' && closeOnEsc && isOpen && !isAnimating.current) {
       e.preventDefault();
@@ -111,14 +106,12 @@ const Modal: React.FC<ModalProps> = ({
     }
   }, [closeOnEsc, isOpen, onClose]);
 
-  // Handle overlay click
   const handleOverlayClick = (e: React.MouseEvent) => {
     if (closeOnOverlayClick && !isAnimating.current && e.target === overlayRef.current) {
       onClose();
     }
   };
 
-  // Focus trap
   const trapFocus = useCallback((e: KeyboardEvent) => {
     if (!modalRef.current || e.key !== 'Tab') return;
 
@@ -144,7 +137,6 @@ const Modal: React.FC<ModalProps> = ({
     }
   }, []);
 
-  // Manage body scroll
   useEffect(() => {
     if (preventScroll && isOpen) {
       document.body.style.overflow = 'hidden';
@@ -157,13 +149,10 @@ const Modal: React.FC<ModalProps> = ({
     };
   }, [isOpen, preventScroll]);
 
-  // Manage focus
   useEffect(() => {
     if (isOpen) {
-      // Store previous active element
       previousActiveElement.current = document.activeElement as HTMLElement;
       
-      // Set focus to initial element or first focusable element
       const timer = setTimeout(() => {
         if (initialFocusRef?.current) {
           initialFocusRef.current.focus();
@@ -177,12 +166,10 @@ const Modal: React.FC<ModalProps> = ({
 
       return () => clearTimeout(timer);
     } else if (previousActiveElement.current) {
-      // Restore focus to previous element
       previousActiveElement.current.focus();
     }
   }, [isOpen, initialFocusRef]);
 
-  // Add/remove event listeners
   useEffect(() => {
     if (isOpen) {
       document.addEventListener('keydown', handleKeyDown);
@@ -221,7 +208,6 @@ const Modal: React.FC<ModalProps> = ({
       aria-modal="true"
       role="dialog"
     >
-      {/* Overlay */}
       {showOverlay && (
         <div
           ref={overlayRef}
@@ -237,12 +223,10 @@ const Modal: React.FC<ModalProps> = ({
         />
       )}
 
-      {/* Backdrop (for additional visual separation) */}
       {showBackdrop && (
         <div className="fixed inset-0" aria-hidden="true" />
       )}
 
-      {/* Modal Container */}
       <div className="flex items-center justify-center min-h-screen p-4">
         {/* Modal */}
         <div
@@ -253,7 +237,6 @@ const Modal: React.FC<ModalProps> = ({
             overflow: 'hidden'
           }}
         >
-          {/* Close button (outside header) */}
           {showCloseButton && (
             <button
               type="button"
@@ -265,7 +248,6 @@ const Modal: React.FC<ModalProps> = ({
             </button>
           )}
 
-          {/* Header */}
           {!hideHeader && (title || showCloseButton) && (
             <div className={`px-6 pt-6 pb-4 border-b border-gray-200 ${headerClassName}`}>
               {typeof title === 'string' ? (
@@ -281,7 +263,6 @@ const Modal: React.FC<ModalProps> = ({
             </div>
           )}
 
-          {/* Content */}
           <div
             className={`overflow-y-auto ${
               size === 'full' ? 'h-full' : ''
@@ -301,7 +282,6 @@ const Modal: React.FC<ModalProps> = ({
             </div>
           </div>
 
-          {/* Footer */}
           {footer && (
             <div className="px-6 py-4 border-t border-gray-200 bg-gray-50 rounded-b-xl">
               {footer}
@@ -313,7 +293,6 @@ const Modal: React.FC<ModalProps> = ({
   );
 };
 
-// Pre-styled modal variants
 export const ConfirmationModal: React.FC<
   Omit<ModalProps, 'children' | 'footer'> & {
     message: string;
@@ -477,7 +456,6 @@ export const BottomSheet: React.FC<ModalProps> = (props) => {
       showCloseButton={false}
       closeOnOverlayClick={true}
     >
-      {/* Handle for swipe gesture */}
       <div className="flex justify-center mb-4">
         <div className="w-12 h-1.5 bg-gray-300 rounded-full" />
       </div>
@@ -534,7 +512,6 @@ export const LoadingModal: React.FC<
   );
 };
 
-// Hook for modal state management
 export const useModal = (initialState = false) => {
   const [isOpen, setIsOpen] = React.useState(initialState);
 

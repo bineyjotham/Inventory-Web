@@ -1,4 +1,3 @@
-// src/components/inventory/ItemForm.tsx
 import React, { useState } from 'react';
 import { InventoryItem } from '../../types';
 import Button from '../common/Button';

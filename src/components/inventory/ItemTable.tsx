@@ -1,4 +1,3 @@
-// src/components/inventory/ItemTable.tsx
 import React, { useState, useMemo, useEffect } from 'react';
 import { useAuth } from '../../hooks/useAuth';
 import { InventoryItem } from '../../types';
@@ -60,9 +59,7 @@ const ItemTable: React.FC<ItemTableProps> = ({
   pagination = false,
   pageSize = 10,
   onPageChange,
-  currentPage = 1,
-  totalItems
-}) => {
+  currentPage = 1}) => {
   const { user } = useAuth();
   const [selectedItems, setSelectedItems] = useState<Set<string>>(new Set());
   const [localSortBy, setLocalSortBy] = useState(sortBy);
@@ -265,17 +262,6 @@ const ItemTable: React.FC<ItemTableProps> = ({
 
   const totalPages = Math.ceil(filteredAndSortedItems.length / pageSize);
 
-  // Handle sort
-  // const handleSort = (field: string) => {
-  //   if (onSort) {
-  //     const newDirection = sortBy === field && sortDirection === 'asc' ? 'desc' : 'asc';
-  //     onSort(field, newDirection);
-  //   } else {
-  //     const newDirection = localSortBy === field && localSortDirection === 'asc' ? 'desc' : 'asc';
-  //     setLocalSortBy(field);
-  //     setLocalSortDirection(newDirection);
-  //   }
-  // };
 type SortField = 'category' | 'name' | 'value' | 'sku' | 'quantity' | 'lastUpdated';
 
 const handleSort = (field: SortField) => {
